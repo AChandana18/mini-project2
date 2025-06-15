@@ -1,0 +1,22 @@
+function updatePreview() {
+  document.getElementById("previewName").textContent = document.getElementById("name").value || "Your Name";
+  document.getElementById("previewEmail").textContent = document.getElementById("email").value || "Email";
+  document.getElementById("previewPhone").textContent = document.getElementById("phone").value || "Phone";
+  document.getElementById("previewSummary").textContent = document.getElementById("summary").value || "Summary goes here...";
+
+  // Skills
+  const skillsText = document.getElementById("skills").value;
+  const skillsArray = skillsText.split(',').map(skill => skill.trim()).filter(Boolean);
+  const skillsList = document.getElementById("previewSkills");
+  skillsList.innerHTML = '';
+  skillsArray.forEach(skill => {
+    const li = document.createElement("li");
+    li.textContent = skill;
+    skillsList.appendChild(li);
+  });
+}
+
+function clearForm() {
+  document.querySelectorAll("input, textarea").forEach(el => el.value = "");
+  updatePreview();
+}
